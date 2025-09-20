@@ -1,0 +1,39 @@
+# OS / editors
+.DS_Store
+.vscode/*
+!.vscode/tasks.json
+
+# Node / pnpm
+node_modules/
+.pnpm-store/
+npm-debug.log*
+pnpm-debug.log*
+coverage/
+
+# Expo / RN
+.expo/
+.expo-shared/
+*.expo/
+*.log
+android/
+ios/
+build/
+dist/
+
+# Env / secrets
+*.env
+*.env.*
+.env.local
+.env.bak
+
+# Prisma
+services/**/prisma/*.db
+services/**/prisma/*.sqlite
+services/**/prisma/migrations/dev.db
+services/**/prisma/migrations/*/snapshot.json
+
+# Logs / caches
+logs/**/*.session.txt
+logs/**/*.tmp
+.cache/
+.tmp/
