@@ -4,6 +4,13 @@ All notable changes to this project will be documented here.
 This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [Semantic Versioning](https://semver.org/).
 
 ---
+## [0.2.0] - 2025-10-01
+### Added
+- 💳 Stripe **Checkout + Subscriptions** integrated in backend  
+- 🔄 Webhooks for subscription activation + cancellation  
+- 🗄️ Prisma migrations: add password, role, Stripe events, subscription flag  
+- 🔐 Full **JWT Authentication** with login + register endpoints  
+- 📖 Root `README.md` with full-stack setup instructions  
 
 ## [Unreleased]
 - Planned: add user authentication
