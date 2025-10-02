@@ -1,4 +1,4 @@
-/*import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TracksController } from './tracks.controller';
 import { TracksService } from './tracks.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -9,4 +9,4 @@ import { PrismaService } from '../prisma/prisma.service';
   exports: [TracksService],
 })
 export class TracksModule {}
-*/
+

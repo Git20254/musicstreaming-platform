@@ -1,4 +1,4 @@
-/*import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { StreamsService } from './streams.service';
 
 @Controller('streams')
@@ -33,4 +33,4 @@ export class StreamsController {
     return this.streamsService.getByUser(userId);
   }
 }
-*/
+
