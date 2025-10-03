@@ -34,11 +34,15 @@ model User {
 model Profile {
   id          String       @id @default(cuid())
   userId      String       @unique
-  kind        ProfileKind  // was String
+  kind        ProfileKind
   displayName String
-  genres      String[]     // remove @db.Text on arrays
-  avatarUrl   String?      @db.Text   // keep @db.Text so long Cloudinary URLs fit
+  genres      String[]
+  avatarUrl   String?      @db.Text
   bio         String?      @db.Text
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+
+  // Relation to User
+  user User @relation(fields: [userId], references: [id])
 }
+
