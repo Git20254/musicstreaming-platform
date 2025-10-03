@@ -6,7 +6,7 @@ It includes a **NestJS backend**, a **React Native mobile app**, and a **Next.js
 ---
 
 ## 🚀 Features
-- 🎵 Track upload + streaming (Prisma + PostgreSQL)
+- 🎵 Track upload + streaming (Prisma + PostgreSQL + Cloudinary)
 - 👤 Artist + user accounts with authentication (JWT)
 - ▶️ Playback via custom MusicPlayer
 - 💳 Subscription payments via **Stripe Checkout**
@@ -42,7 +42,7 @@ bash
 Copy code
 cd backend
 npm install
-cp .env.example .env   # configure DB + Stripe keys
+cp .env.example .env   # configure DB + Stripe + Cloudinary keys
 npx prisma migrate dev
 npm run start:dev
 3. Mobile app
@@ -70,6 +70,19 @@ Copy code
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"fan@example.com","password":"secret123"}'
+Upload File (Cloudinary)
+bash
+Copy code
+curl -X POST http://localhost:3000/upload \
+  -F "file=@logo.png"
+Response:
+
+json
+Copy code
+{
+  "message": "✅ File uploaded successfully!",
+  "url": "https://res.cloudinary.com/..."
+}
 Start subscription checkout
 bash
 Copy code
@@ -77,23 +90,18 @@ curl -X POST http://localhost:3000/payments/checkout \
   -H "Authorization: Bearer <JWT_TOKEN>" \
   -H "Content-Type: application/json"
 ✅ Summary
-The platform combines backend + mobile + frontend with Stripe-powered subscriptions, JWT auth, Prisma DB, and AI recommendations.
+The platform combines backend + mobile + frontend with:
+
+Stripe-powered subscriptions
+
+JWT authentication
+
+Prisma-managed PostgreSQL
+
+Cloudinary media uploads
+
+AI-driven recommendations
+
 All changes are tracked in CHANGELOG.md.
-
-yaml
-Copy code
-
----
-
-3. Save + exit:
-- `CTRL+O`, then `Enter`  
-- `CTRL+X`  
-
----
-
-👉 Do you want me to give you the exact **git add/commit/push** commands for this new `README.md` right after you save it?
-
-
-
 
 
