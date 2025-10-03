@@ -7,26 +7,28 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 
 ## [1.2.0] - 2025-10-03
 ### Added
-- 🎤 **IndieStream mode** for independent artists:
-  - New `/indie/upload` endpoint to allow direct track submissions (MP3, WAV)
-  - Support for artist metadata (title, album, genre) stored in DB
-  - Auto-storage of audio files in **Cloudinary (audio bucket)**
-- 🎨 Updated mobile app playlist UI:
-  - Display indie tracks with special 🎧 badge
-  - Added fallback artwork for tracks without cover art
-- 🔔 Notification service:
-  - Sends email confirmation after successful indie track upload  
+- 👤 **Profile Module**:
+  - New `Profile` model with relation to `User`
+  - Added `ProfilesController` + `ProfilesService`
+  - Endpoints to **create, fetch, and update** user profiles (fans + artists)
+- 🔐 **Role-based registration**:
+  - Registration now requires role: `FAN` or `ARTIST`
+  - Enforced stronger password validation (min 8 chars, must include letters + numbers)
+- 📝 Expanded **README.md**:
+  - Updated with registration + login curl examples
+  - Documented profiles, role-based auth, and password rules
 
 ### Changed
-- 🔧 Refactored upload module to handle **both image + audio**  
-- 🗄️ Updated Prisma schema:
-  - Added new `Track` model fields: `isIndie`, `genre`, `uploadedBy`
-  - Synced DB migrations with IndieStream updates  
-- 📘 Updated **README.md** with IndieStream setup and usage guide  
+- 🔧 Refined authentication flow:
+  - JWT payload now includes `role`
+  - Improved validation error messages for register/login
+- 🔄 Updated Prisma schema:
+  - Fixed `Profile` relation with `User`
+  - Synced DB with migrations
 
 ### Notes
-- Indie uploads stored in Cloudinary under `solares/indie-tracks/`
-- Planned: moderation system for reviewing indie submissions  
+- Future: extend profiles for **artist bios, fan preferences, and uploads**
+- Role-based system is now in place → will expand for IndieStream artist tools
 
 ---
 
@@ -48,17 +50,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 
 ### Notes
 - Uploads are stored in Cloudinary under `solares/uploads` folder  
-- Future: will extend `/upload` to handle audio files (MP3, WAV) for artist track submissions  
-
----
-
-## [0.2.0] - 2025-10-01
-### Added
-- 💳 Stripe **Checkout + Subscriptions** integrated in backend  
-- 🔄 Webhooks for subscription activation + cancellation  
-- 🗄️ Prisma migrations: add password, role, Stripe events, subscription flag  
-- 🔐 Full **JWT Authentication** with login + register endpoints  
-- 📖 Root `README.md` with full-stack setup instructions  
+- Future: will extend `/upload` to handle audio files (MP3, WAV) for artist track submissions
 
 ---
 
@@ -87,6 +79,16 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 
 ---
 
+## [0.2.0] - 2025-10-01
+### Added
+- 💳 Stripe **Checkout + Subscriptions** integrated in backend  
+- 🔄 Webhooks for subscription activation + cancellation  
+- 🗄️ Prisma migrations: add password, role, Stripe events, subscription flag  
+- 🔐 Full **JWT Authentication** with login + register endpoints  
+- 📖 Root `README.md` with full-stack setup instructions  
+
+---
+
 ## [0.1.0] - 2025-09-30
 ### Added
 - 🎵 Working **MusicPlayer** with cover art + audio playback
@@ -105,3 +107,4 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 - 🎶 Initial backend setup with **NestJS + Prisma + PostgreSQL**
 - 📱 Initial mobile app scaffold with Expo / React Native
 - 🖥️ Project structure: backend, mobile-app, frontend-web
+
