@@ -16,6 +16,13 @@ export class UsersController {
         email: true,
         role: true,
         subscriptionActive: true,
+        profile: {
+          select: {
+            bio: true,
+            avatarUrl: true,
+            avatarSizes: true,
+          },
+        },
       },
     });
 
@@ -28,6 +35,9 @@ export class UsersController {
       email: user.email,
       role: user.role,
       subscriptionActive: user.subscriptionActive,
+      bio: user.profile?.bio ?? null,
+      avatarUrl: user.profile?.avatarUrl ?? null,
+      avatarSizes: user.profile?.avatarSizes ?? null,
     };
   }
 }

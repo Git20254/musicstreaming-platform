@@ -1,3 +1,4 @@
+import 'dotenv/config';  // 👈 Add this line FIRST
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
