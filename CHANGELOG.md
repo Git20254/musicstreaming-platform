@@ -4,6 +4,26 @@ All notable changes to this project will be documented here.
 This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [Semantic Versioning](https://semver.org/).
 
 ---
+## [1.1.0] - 2025-10-03
+### Added
+- 🌩️ Integrated **Cloudinary upload support**:
+  - New `/upload` endpoint with `UploadController`
+  - Configured **Cloudinary provider** with `.env` keys (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`)
+  - Supports image uploads (e.g. album art) with automatic URL return
+- 📖 Updated **README.md**:
+  - Added example `curl` command for uploading files
+  - Documented Cloudinary integration and usage
+
+### Changed
+- 🔧 Updated Prisma schema for `Profile` model:
+  - Added proper relation with `User`
+  - Fixed migration issue with `id` primary key
+- 📝 Synced backend with database migrations
+
+### Notes
+- Uploads are stored in Cloudinary under `solares/uploads` folder  
+- Future: will extend `/upload` to handle audio files (MP3, WAV) for artist track submissions
+
 ## [0.2.0] - 2025-10-01
 ### Added
 - 💳 Stripe **Checkout + Subscriptions** integrated in backend  
