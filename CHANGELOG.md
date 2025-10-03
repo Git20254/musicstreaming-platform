@@ -4,6 +4,32 @@ All notable changes to this project will be documented here.
 This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [Semantic Versioning](https://semver.org/).
 
 ---
+
+## [1.2.0] - 2025-10-03
+### Added
+- 🎤 **IndieStream mode** for independent artists:
+  - New `/indie/upload` endpoint to allow direct track submissions (MP3, WAV)
+  - Support for artist metadata (title, album, genre) stored in DB
+  - Auto-storage of audio files in **Cloudinary (audio bucket)**
+- 🎨 Updated mobile app playlist UI:
+  - Display indie tracks with special 🎧 badge
+  - Added fallback artwork for tracks without cover art
+- 🔔 Notification service:
+  - Sends email confirmation after successful indie track upload  
+
+### Changed
+- 🔧 Refactored upload module to handle **both image + audio**  
+- 🗄️ Updated Prisma schema:
+  - Added new `Track` model fields: `isIndie`, `genre`, `uploadedBy`
+  - Synced DB migrations with IndieStream updates  
+- 📘 Updated **README.md** with IndieStream setup and usage guide  
+
+### Notes
+- Indie uploads stored in Cloudinary under `solares/indie-tracks/`
+- Planned: moderation system for reviewing indie submissions  
+
+---
+
 ## [1.1.0] - 2025-10-03
 ### Added
 - 🌩️ Integrated **Cloudinary upload support**:
@@ -22,7 +48,9 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 
 ### Notes
 - Uploads are stored in Cloudinary under `solares/uploads` folder  
-- Future: will extend `/upload` to handle audio files (MP3, WAV) for artist track submissions
+- Future: will extend `/upload` to handle audio files (MP3, WAV) for artist track submissions  
+
+---
 
 ## [0.2.0] - 2025-10-01
 ### Added
@@ -31,11 +59,6 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 - 🗄️ Prisma migrations: add password, role, Stripe events, subscription flag  
 - 🔐 Full **JWT Authentication** with login + register endpoints  
 - 📖 Root `README.md` with full-stack setup instructions  
-
-## [Unreleased]
-- Planned: add user authentication
-- Planned: improve playlist UI
-- Planned: connect payments service
 
 ---
 
@@ -82,4 +105,3 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) and uses [S
 - 🎶 Initial backend setup with **NestJS + Prisma + PostgreSQL**
 - 📱 Initial mobile app scaffold with Expo / React Native
 - 🖥️ Project structure: backend, mobile-app, frontend-web
-
