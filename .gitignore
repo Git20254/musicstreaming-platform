@@ -37,3 +37,8 @@ logs/**/*.session.txt
 logs/**/*.tmp
 .cache/
 .tmp/
+
+# Local backups
+backend_backup/
+mobile-app_backup/
+
